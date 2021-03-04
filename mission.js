@@ -1,4 +1,4 @@
-onst cron = require('node-cron');
+const cron = require('node-cron');
 const express = require('express');
 const fs = require('fs');
 const shell = require('shelljs');
