@@ -2,7 +2,7 @@
 <br>
 <p align="center">
 
-<img src="https://github.com/digitalnativeinc/standard-oracle/blob/master/media/lumen.png" width="800">
+<img src="https://raw.githubusercontent.com/digitalnativeinc/lumen/main/media/lumen.png" width="800">
 <br><br>
 
 
