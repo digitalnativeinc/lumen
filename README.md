@@ -36,26 +36,26 @@ oracle will run to
 
 Lumen is a monorepo project which consists of packages for independent functions.
 
-# `config`
+## `config`
 
 Configuration parser
 
-# `Core`
+## `Core`
 
 Entry point of the software orchestrating other packages
 
-# `fetch`
+## `fetch`
 
 fetching toolkit for external assets
 
-# `feed`
+## `feed`
 
 feeding interface to blockchains
 
-# `events`
+## `events`
 
 event handler to show status of an oracle
 
-# `error`
+## `error`
 
 specifying errors in lumen 
