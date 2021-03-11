@@ -30,8 +30,6 @@ Configure `lumen-config.json` then run command:
 lumen run ./lumen-config.json
 ```
 
-oracle will run to
-
 ## Packages
 
 Lumen is a monorepo project which consists of packages for independent functions.
