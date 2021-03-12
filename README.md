@@ -2,7 +2,7 @@
 <br>
 <p align="center">
 
-<img src="https://github.com/digitalnativeinc/standard-oracle/blob/master/media/lumen.png" width="800">
+<img src="https://raw.githubusercontent.com/digitalnativeinc/lumen/main/media/lumen.png" width="800">
 <br><br>
 
 
@@ -30,32 +30,30 @@ Configure `lumen-config.json` then run command:
 lumen run ./lumen-config.json
 ```
 
-oracle will run to
-
 ## Packages
 
 Lumen is a monorepo project which consists of packages for independent functions.
 
-# `config`
+## `config`
 
 Configuration parser
 
-# `Core`
+## `Core`
 
 Entry point of the software orchestrating other packages
 
-# `fetch`
+## `fetch`
 
 fetching toolkit for external assets
 
-# `feed`
+## `feed`
 
 feeding interface to blockchains
 
-# `events`
+## `events`
 
 event handler to show status of an oracle
 
-# `error`
+## `error`
 
 specifying errors in lumen 
