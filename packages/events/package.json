@@ -1,0 +1,49 @@
+{
+  "name": "@digitalnative/lumen-events",
+  "version": "0.0.0",
+  "description": "Utility for handling events in Houston",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/events#readme",
+  "repository": "https://github.com/digitalnative/lumen/tree/master/packages/events",
+  "bugs": {
+    "url": "https://github.com/digitalnative/lumen/issues"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build",
+    "test": "yarn build && mocha --exit -r ts-node/register test/**/*.test.ts"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "configstore": "^5.0.1",
+    "emittery": "^0.7.1",
+    "find-up": "^2.1.0",
+    "lodash.assignin": "^4.2.0",
+    "lodash.merge": "^4.6.2",
+    "module": "^1.2.5",
+    "original-require": "1.0.1",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@types/configstore": "^4.0.0",
+    "@types/find-up": "^2.1.0",
+    "@types/lodash.assignin": "^4.2.6",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/node": "^12.12.9",
+    "@types/sinon": "^7.0.13",
+    "mocha": "8.0.1",
+    "sinon": "9.0.2",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.6"
+  },
+  "keywords": [
+    "config",
+    "Terra",
+    "houston"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

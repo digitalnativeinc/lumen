@@ -1,0 +1,32 @@
+{
+  "name": "@digitalnative/lumen-error",
+  "version": "0.0.0",
+  "description": "Simple module that allows native Error objects to be extended",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/error#readme",
+  "repository": "https://github.com/digitalnative/lumen/tree/master/packages/error",
+  "bugs": {
+    "url": "https://github.com/digitalnative/lumen/issues"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build"
+  },
+  "keywords": [
+    "cli",
+    "dev-tool"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "extendable-error": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.6"
+  }
+}

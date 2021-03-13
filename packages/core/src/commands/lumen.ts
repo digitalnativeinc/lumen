@@ -1,0 +1,22 @@
+const commander = require("commander");
+const program = new commander.Command();
+import { showError, suggestCommand } from "../utils/logger.util";
+
+export const lumen = program
+  .version("0.0.4")
+  .description(
+    "A world-class development framework for cosmwasm smart contracts"
+  )
+  .name("houston")
+  .usage("<command> [arguments]")
+  .command("run [options]", "run lumen oracle provider", {
+    executableFile: "./commands/lumen-run",
+  })
+  .on("command:*", function(operands: string[]) {
+    showError(`error: unknown command '${operands[0]}'`);
+    const availableCommands = program.commands.map((cmd: { name: () => any }) =>
+      cmd.name()
+    );
+    suggestCommand(operands[0], availableCommands);
+    process.exitCode = 1;
+  });
