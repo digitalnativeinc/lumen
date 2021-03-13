@@ -1,11 +1,11 @@
 {
   "name": "@digitalnative/lumen-client",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Oracle client runner to orchestrate which data to fetch and feed",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/error#readme",
-  "repository": "https://github.com/digitalnative/lumen/tree/master/packages/error",
+  "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/client#readme",
+  "repository": "https://github.com/digitalnative/lumen/tree/master/packages/client",
   "bugs": {
     "url": "https://github.com/digitalnative/lumen/issues"
   },
