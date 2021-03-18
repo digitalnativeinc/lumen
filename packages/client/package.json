@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Oracle client runner to orchestrate which data to fetch and feed",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
