@@ -1,6 +1,13 @@
 #!/usr/bin/env node
+import runClient from "@digitalnative/lumen-client";
 const commander = require("commander");
 const program = new commander.Command();
-import runClient from "@digitalnative/lumen-client";
 
-runClient()
+program
+  .command("<name> [options]")
+  .name("run")
+  .usage("[options]")
+  .option("--mock", "run an oracle with mock data")
+  .description("run a oracle client")
+  .action(runClient)
+  .parse(process.argv);

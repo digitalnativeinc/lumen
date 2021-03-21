@@ -1,9 +1,14 @@
-import ExtendableError from "extendable-error";
+import table from "./table"
+import mock from "./mock"
 
-class LumenError extends ExtendableError {
-  constructor(message: string, public code: number) {
-    super(message);
-  }
+
+const fetch = ()  => {
+  // fetch datas from data table
+
+
+  // nomics for crypto
+
+  // finnhub for stocks
 }
 
-export default LumenError;
+export default fetch;

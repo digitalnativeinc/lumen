@@ -13,7 +13,7 @@ export default {
     ],
     "client:init": [
       function() {
-        this.logger.log(`${OS.EOL}> 🕒 Initiated cron job to submit oracle!`);
+        this.logger.log(`${OS.EOL}> 🕒 Initiated cron job to submit data from the oracle!`);
         this.logger.log(`================`);
       }
     ],

@@ -34,7 +34,7 @@
     "oracle"
   ],
   "dependencies": {
-    "@digitalnative/lumen-client": "^0.0.2",
+    "@digitalnative/lumen-client": "^0.0.3",
     "@liftr/tscov": "^1.4.7",
     "@types/figlet": "^1.2.0",
     "@types/fs-extra": "^9.0.1",
