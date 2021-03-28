@@ -24,10 +24,19 @@ Grab the latest version of [NPM](https://www.npmjs.com/package/@digitalnativeinc
 npm install -g @digitalnativeinc/lumen
 ```
 
-Configure `lumen-config.json` then run command:
+Configure `lumen-config.json` 
 
+```json
+{
+    "nomics": "<Nomics API Key>",
+    "finnhub": "<Finnhub API Key>",
+    "mnemonic": "<Mnemonic to generate an account>",
+    "rpc": "<RPC endpoint address or domain>"
+}
+```
+Then run command with the file in the current working directory:
 ```bash
-lumen run ./lumen-config.json
+lumen run
 ```
 
 ## Packages
