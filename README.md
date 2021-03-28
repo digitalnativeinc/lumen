@@ -36,7 +36,10 @@ Lumen is a monorepo project which consists of packages for independent functions
 
 ## `config`
 
-Configuration parser
+Configuration parser should parse a js file with
+- api keys to fetch 
+- polkadot account json file directory to submit data 
+- RPC endpoint address to connect to the blockchain 
 
 ## `Core`
 
@@ -46,13 +49,27 @@ Entry point of the software orchestrating other packages
 
 fetching toolkit for external assets
 
-## `feed`
+This package manages data table to fetch from external sources and returns price table.
 
-feeding interface to blockchains
+## `submit`
+
+This package manages a function which takes data table from `fetch` packages as an argument submits the data with polkadot-js account parsed from config file
+The algorithm goes like:
+1. checks whether the client is the current oracle provider for a given era
+2. submits price data with the asset id allocated in the data table, and checks whether the data is successfully submitted.
 
 ## `events`
 
-event handler to show status of an oracle
+This packages is an event system which is included in the `config` package. One can easily emit event from importing configuration file. 
+
+```js
+  import LumenConfig from "@digitalnative/lumen-config";
+  const config = LumenConfig.default();
+  const { events } = config;
+  events.emit("client:start");
+```
+
+events can be added in the `events/defaultSubscribers` directory. 
 
 ## `error`
 
