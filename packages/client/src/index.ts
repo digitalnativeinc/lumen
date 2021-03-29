@@ -10,7 +10,8 @@ const runClient = () => {
   cron.schedule("* * * * *", function() {
     console.log("running a task every minute");
     // fetch data
-    const data = import fetchData(config)
+    const data = fetchData(false, config);
+    console.log(data);
   });
   events.emit("client:init");
 };

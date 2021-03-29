@@ -22,6 +22,7 @@
     "access": "public"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "extendable-error": "^0.1.7",
     "finnhub": "^1.2.1",
     "nomics": "^0.5.7"
