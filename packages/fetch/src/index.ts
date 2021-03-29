@@ -42,6 +42,7 @@ const sources = {
 };
 
 const fetchStockData = async (symbol, apiKey) => {
+  symbol = symbol.substr(0, symbol.length - 3);
   console.log(`fetching stock data on: ${symbol}`);
   try {
     const { data } = await axios.get(
@@ -72,7 +73,7 @@ const fetchCoinData = async (abbr, apiKey) => {
   }
 };
 
-const fetchData = (isMock: boolean, config: LumenConfig) => {
+const fetchData = async (isMock: boolean, config: LumenConfig) => {
   // Check mock option
   if (isMock) {
     return mockUp;
@@ -81,7 +82,7 @@ const fetchData = (isMock: boolean, config: LumenConfig) => {
     const data = {};
     // traverse from the table dict and get price for each
     for (const [key, value] of Object.entries(table)) {
-      const result = (async () => {
+      const result = await (async () => {
         switch (sources[key]) {
           // finnhub for stocks
           case Sources.FINNHUB:

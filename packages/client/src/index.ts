@@ -7,10 +7,10 @@ const runClient = () => {
   const { events } = config;
   events.emit("client:start");
   // register cron job to execute in every minute
-  cron.schedule("* * * * *", function() {
+  cron.schedule("* * * * *", async function() {
     console.log("running a task every minute");
     // fetch data
-    const data = fetchData(false, config);
+    const data = await fetchData(false, config);
     console.log(data);
   });
   events.emit("client:init");
