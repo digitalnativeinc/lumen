@@ -24,7 +24,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "finnhub": "^1.2.1",
-    "nomics": "^0.5.7"
+    "nomics": "^0.5.7",
+    "@digitalnative/lumen-config": "^0.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
