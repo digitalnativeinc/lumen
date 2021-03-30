@@ -1,6 +1,7 @@
 import mockUp from "./mock";
 import LumenConfig from "@digitalnative/lumen-config";
 import axios from "axios";
+import padTokenInput from "./decimals";
 
 /// Table for locating asset_id in STND with the ticker
 /// Initial dataset are from https://wsb.gold/ top 10 ticker mentions list
@@ -8,14 +9,14 @@ import axios from "axios";
 const table = {
   0: "STND", // Governance token
   1: "MTR", // Stablecoin
-  2: "AMC:-4",
-  3: "APHA:-4",
-  4: "TLRY:-4",
-  5: "SPY:-4",
-  6: "SNDL:-4",
-  7: "BB:-4",
-  8: "TWTR:-4",
-  9: "PLTR:-4",
+  2: "AMC",
+  3: "APHA",
+  4: "TLRY",
+  5: "SPY",
+  6: "SNDL",
+  7: "BB",
+  8: "TWTR",
+  9: "PLTR",
 };
 
 enum Sources {
@@ -30,7 +31,7 @@ enum Sources {
 
 const sources = {
   0: Sources.UNISWAP, // Governance token
-  1: Sources.MISC, // Stablecoin TODO: wait until we list stablecoin
+  1: Sources.MISC, // Stablecoin TODO: wait until we list stablecoin on exchanges
   2: Sources.FINNHUB,
   3: Sources.FINNHUB,
   4: Sources.FINNHUB,
@@ -41,35 +42,38 @@ const sources = {
   9: Sources.FINNHUB,
 };
 
-const fetchStockData = async (symbol, apiKey) => {
-  symbol = symbol.substr(0, symbol.length - 3);
-  console.log(`fetching stock data on: ${symbol}`);
+const fetchStockData = async (symbol, config) => {
   try {
+    config.events.emit("fetch:start", { symbol });
     const { data } = await axios.get(
-      `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`
+      `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${config.finnhub}`
     );
-    return data.c;
+    const price = data.c;
+    config.events.emit("fetch:succeed", { symbol, price });
+    return padTokenInput(String(price), 15);
   } catch (err) {
-    console.error(
-      `failed to fetch stock data on: ${symbol}\nstatus: ${err.response &&
-        err.response.status}\nmessage: ${err.response && err.response.message}`
-    );
+    console.log(err);
+    const why = `failed to fetch stock data on: ${symbol}\nstatus: ${err.response &&
+      err.response.status}\nmessage: ${err.response && err.response.message}`;
+    config.events.emit("fetch:fail", { why });
   }
 };
 
-const fetchCoinData = async (abbr, apiKey) => {
-  console.log(`fetching coin data on: ${abbr}`);
+const fetchNomicsData = async (symbol, config) => {
   try {
+    config.events.emit("fetch:start", { symbol });
     const { data } = await axios.get(
-      `https://api.nomics.com/v1/currencies/ticker?key=${apiKey}&ids=${abbr}&intervdal=1d,30d&convert=USD&per-page=100&page=1&sort=rank`
+      `https://api.nomics.com/v1/currencies/ticker?key=${
+        config.nomics
+      }&ids=${symbol}&intervdal=1d,30d&convert=USD&per-page=100&page=1&sort=rank`
     );
-    console.log(`sucessfully fetched coin data: ${abbr}`);
-    return data[0].price;
+    const price = data[0].price;
+    config.events.emit("fetch:succeed", { symbol, price });
+    return padTokenInput(price, 15);
   } catch (err) {
-    console.error(
-      `failed to fetch coin data on :${abbr}\nstatus: ${err.response &&
-        err.response.status}\nmessage: ${err.response && err.response.message}`
-    );
+    const why = `failed to fetch coin data on :${symbol}\nstatus: ${err.response &&
+      err.response.status}\nmessage: ${err.response && err.response.message}`;
+    config.events.emit("fetch:fail", { why });
   }
 };
 
@@ -86,10 +90,10 @@ const fetchData = async (isMock: boolean, config: LumenConfig) => {
         switch (sources[key]) {
           // finnhub for stocks
           case Sources.FINNHUB:
-            return await fetchStockData(value, config.finnhub);
+            return await fetchStockData(value, config);
           // nomics for crypto
           case Sources.NOMICS:
-            return await fetchCoinData(value, config.nomics);
+            return await fetchNomicsData(value, config);
           default:
             return (1e15).toString();
         }
