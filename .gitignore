@@ -6,4 +6,4 @@ bin/
 dist/
 lib/
 yarn.lock
-packages/core/lumen-config.json
+core/lumen-config.json
