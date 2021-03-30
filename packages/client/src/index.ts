@@ -13,7 +13,7 @@ const runClient = () => {
     // fetch data
     const data = await fetchData(false, config);
     console.log(data);
-    //const result = await submitData(false, config);
+    await submitData(data, config);
   });
   events.emit("client:init");
 };
