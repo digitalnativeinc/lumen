@@ -1,6 +1,6 @@
 import LumenConfig from "@digitalnative/lumen-config";
 import fetchData from "@digitalnative/lumen-fetch";
-import submitData from "@digitalnative/lumen-submit";
+//import submitData from "@digitalnative/lumen-submit";
 
 const runClient = () => {
   const cron = require("node-cron");
@@ -13,7 +13,7 @@ const runClient = () => {
     // fetch data
     const data = await fetchData(false, config);
     console.log(data);
-    const result = await submitData(false, config);
+    //const result = await submitData(false, config);
   });
   events.emit("client:init");
 };
