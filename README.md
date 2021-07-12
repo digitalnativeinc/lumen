@@ -83,3 +83,7 @@ events can be added in the `events/defaultSubscribers` directory.
 ## `error`
 
 specifying errors in lumen 
+
+## `discord`
+
+Discord integration for the oracle client
