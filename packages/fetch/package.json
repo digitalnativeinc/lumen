@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-fetch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "fetching module for the oracle",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
