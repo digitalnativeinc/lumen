@@ -5,9 +5,7 @@
     "bootstrap": "lerna bootstrap",
     "prepare": "lerna run prepare --stream --concurrency=1",
     "clean": "lerna clean",
-    "publish-release": "./scripts/publish-release.sh",
-    "publish-dist-tag": "./scripts/publish-dist-tag.sh",
-    "prepare-release": "./scripts/prepare-release.sh",
+    "publish": "lerna publish",
     "test": "lerna run test --stream --concurrency=1 -- --colors",
     "ci": "./scripts/ci.sh"
   },
@@ -25,6 +23,9 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {},
   "husky": {
