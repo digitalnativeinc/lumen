@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-discord",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Discord integration template for oracle client",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/discord#readme",

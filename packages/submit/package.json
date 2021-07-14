@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-submit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Submission module for the oracle",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@digitalnative/lumen-config": "^0.0.0",
-    "@digitalnative/lumen-targets": "^0.0.3",
+    "@digitalnative/lumen-targets": "^0.0.4",
     "@digitalnative/type-definitions": "1.1.9",
     "@polkadot/api": "^5.0.1",
     "@polkadot/keyring": "^7.0.1",

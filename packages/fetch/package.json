@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-fetch",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "fetching module for the oracle",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -22,8 +22,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@digitalnative/lumen-config": "^0.0.3",
-    "@digitalnative/lumen-targets": "^0.0.3",
+    "@digitalnative/lumen-config": "^0.0.4",
+    "@digitalnative/lumen-targets": "^0.0.4",
     "axios": "^0.21.1",
     "finnhub": "^1.2.1",
     "nomics": "^0.5.7"
