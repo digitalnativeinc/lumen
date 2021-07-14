@@ -8,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/digitalnative/lumen/issues"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,7 +17,8 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@digitalnative/lumen-events": "^0.0.1",
+    "@digitalnative/lumen-events": "0.0.1",
+    "@polkadot/util-crypto": "^7.0.1",
     "configstore": "^4.0.0",
     "find-up": "^2.1.0",
     "lodash.assignin": "^4.2.0",
