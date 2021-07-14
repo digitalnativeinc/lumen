@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-client",
-  "version": "0.0.4",
+  "version": "0.0.5-0.3.9-beta.0.0",
   "description": "Oracle client runner to orchestrate which data to fetch and feed",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@digitalnative/lumen-config": "0.0.1",
-    "@digitalnative/lumen-discord": "^0.0.4",
+    "@digitalnative/lumen-discord": "^0.0.5-0.3.9-beta.0.0",
     "@digitalnative/lumen-fetch": "0.0.2",
     "@digitalnative/lumen-submit": "0.0.1",
     "@digitalnative/type-definitions": "1.1.9",
