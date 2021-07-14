@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-client",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Oracle client runner to orchestrate which data to fetch and feed",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -27,9 +27,11 @@
     "@digitalnative/lumen-fetch": "0.0.2",
     "@digitalnative/lumen-submit": "0.0.1",
     "@digitalnative/type-definitions": "1.1.9",
-    "@polkadot/api": "5.0.1",
+    "@polkadot/api": "^5.0.1",
     "@polkadot/keyring": "^7.0.1",
     "@polkadot/types": "5.0.2-6",
+    "@polkadot/util": "7.0.1",
+    "@polkadot/util-crypto": "7.0.1",
     "node-cron": "^3.0.0"
   },
   "devDependencies": {
