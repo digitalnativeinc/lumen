@@ -1,8 +1,8 @@
 {
   "name": "@digitalnative/lumen-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Oracle client runner to orchestrate which data to fetch and feed",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/client#readme",
   "repository": "https://github.com/digitalnative/lumen/tree/master/packages/client",
@@ -16,19 +16,19 @@
   },
   "keywords": [
     "cli",
-    "dev-tool"
+    "middleware"
   ],
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@digitalnative/lumen-config": "^0.0.0",
+    "@digitalnative/lumen-config": "^0.0.1",
     "@digitalnative/lumen-discord": "0.0.0",
-    "node-cron": "^3.0.0",
     "@digitalnative/type-definitions": "1.1.9",
     "@polkadot/api": "5.0.1",
     "@polkadot/keyring": "^7.0.1",
-    "@polkadot/types": "5.0.2-6"
+    "@polkadot/types": "5.0.2-6",
+    "node-cron": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
