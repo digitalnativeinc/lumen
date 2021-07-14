@@ -1,8 +1,8 @@
 {
   "name": "@digitalnative/lumen-fetch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "fetching module for the oracle",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/fetch#readme",
   "repository": "https://github.com/digitalnative/lumen/tree/master/packages/fetch",
@@ -22,10 +22,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@digitalnative/lumen-config": "^0.0.1",
     "axios": "^0.21.1",
     "finnhub": "^1.2.1",
-    "nomics": "^0.5.7",
-    "@digitalnative/lumen-config": "^0.0.0"
+    "nomics": "^0.5.7"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
