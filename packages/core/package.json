@@ -1,8 +1,8 @@
 {
   "name": "@digitalnative/lumen",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Core module for Lumen, a chain-agnostic oracle provider",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/core#readme",
   "repository": "https://github.com/digitalnative/lumen/tree/master/packages/core",
@@ -31,10 +31,11 @@
   },
   "keywords": [
     "cli",
-    "oracle"
+    "oracle",
+    "middleware"
   ],
   "dependencies": {
-    "@digitalnative/lumen-client": "^0.0.3",
+    "@digitalnative/lumen-client": "^0.0.5",
     "@liftr/tscov": "^1.4.7",
     "@types/figlet": "^1.2.0",
     "@types/fs-extra": "^9.0.1",
