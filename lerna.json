@@ -1,10 +1,14 @@
 {
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "bootstrap": {
-        "npmClientArgs": ["--no-package-lock"]
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
     },
     "publish": {
       "allowBranch": "main"
@@ -13,7 +17,6 @@
       "access": "public"
     },
     "fetch-build": "cd ../fetch && yarn && cd ../client && yarn && cd ../core && yarn"
-
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
