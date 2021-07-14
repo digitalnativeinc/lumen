@@ -25,7 +25,7 @@ export enum Sources {
 }
 
 export const sources = {
-  0: Sources.UNISWAP, // Governance token
+  0: Sources.NOMICS, // Governance token
   1: Sources.MISC, // Stablecoin TODO: wait until we list stablecoin on exchanges
   2: Sources.FINNHUB,
   3: Sources.FINNHUB,

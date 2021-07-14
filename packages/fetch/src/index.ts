@@ -57,7 +57,7 @@ const fetchData = async (isMock: boolean, config: LumenConfig) => {
           case Sources.NOMICS:
             return await fetchNomicsData(value, config);
           default:
-            return (1e15).toString();
+            return (1e8).toString();
         }
       })();
       data[key] = result;

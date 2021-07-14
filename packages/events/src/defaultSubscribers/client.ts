@@ -2,52 +2,40 @@ const OS = require("os");
 
 export default {
   initialization: function() {
+    require("console-stamp")(console, {
+      format: ":date(yyyy/mm/dd HH:MM:ss.l)",
+    });
     this.logger = console;
   },
   handlers: {
     "client:start": [
       function() {
-        this.logger.log(`${OS.EOL}> 🔍 starting the oracle client...`);
+        this.logger.log(`[client] 🔍 starting the oracle client...`);
       },
     ],
     "client:init": [
       function() {
         this.logger.log(
-          `${OS.EOL}> 🕒 Initiated cron job to submit data from the oracle!`
+          `[client] 🕒 Initiated cron job to submit data from the oracle! Waiting for the first iteration...`
         );
-        this.logger.log(`================`);
+      },
+    ],
+    "client:next": [
+      function() {
+        this.logger.log(`[client] 🕒 starting the iteration...`);
       },
     ],
     "client:wait": [
       function() {
-        this.logger.log(`${OS.EOL}> 🕔 Waiting for the next submission...`);
-      },
-    ],
-    "client:submitSucceed": [
-      function({ assetName, price }) {
-        this.logger.log(
-          `${
-            OS.EOL
-          }> 📬 Successfully submitted info to the blockchain: ${assetName} at 💵 ${price}`
-        );
-      },
-    ],
-    "client:submitFailed": [
-      function({ assetName, price, error }) {
-        this.logger.log(
-          `${
-            OS.EOL
-          }> 🤷‍♂️ Failed to submit info to the blockchain: ${assetName} at 💵 ${price}
-          ${OS.EOL} ${error}`
-        );
+        this.logger.log(`[cleint] 🕔 Waiting for the next submission...`);
       },
     ],
     "client:fail": [
       function({ error }) {
         this.logger.log(
-          `${OS.EOL} 🌪 Something went wrong while running the oracle!`
+          `[client] 🌪 Something went wrong while running the oracle!`
         );
-        this.logger.log(`${error}${OS.EOL}`);
+        this.logger.log(`${error}`);
       },
     ],
   },

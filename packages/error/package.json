@@ -1,8 +1,8 @@
 {
   "name": "@digitalnative/lumen-error",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple module that allows native Error objects to be extended",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/error#readme",
   "repository": "https://github.com/digitalnative/lumen/tree/master/packages/error",
@@ -16,7 +16,7 @@
   },
   "keywords": [
     "cli",
-    "dev-tool"
+    "middleware"
   ],
   "publishConfig": {
     "access": "public"

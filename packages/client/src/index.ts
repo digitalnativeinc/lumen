@@ -11,7 +11,7 @@ const runClient = async () => {
   const api = await polkadotApi(config);
   // register cron job to execute in every minute
   cron.schedule("*/90 * * * * *", async function() {
-    console.log("running a task every 2 minutes");
+    events.emit("client:next");
     // fetch data
     const data = await fetchData(false, config);
     await submitData(data, config, api);

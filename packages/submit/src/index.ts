@@ -1,9 +1,7 @@
 import LumenConfig from "@digitalnative/lumen-config";
 import { Keyring } from "@polkadot/keyring";
-import { ApiPromise, WsProvider } from "@polkadot/api";
-import type { RegistryTypes } from '@polkadot/types/types';
-import { config } from "process";
-import {definitions} from "@digitalnative/type-definitions";
+import { ApiPromise } from "@polkadot/api";
+import { table } from "@digitalnative/lumen-targets";
 
 const submitData = async (
   data: { [key: string]: string },
@@ -18,16 +16,18 @@ const submitData = async (
     config.mnemonic,
     { name: "oracle pair" },
     "sr25519"
-  );     
-  
+  );
+
   for (const [key, value] of Object.entries(data)) {
-      try{
-        console.log(key)
-        
-        await report(key, value, api, pair)
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      await report(key, value, api, pair, config);
+    } catch (error) {
+      config.events.emit("submit:fail", {
+        assetName: key,
+        price: value,
+        error,
+      });
+    }
   }
   /*
   // traverse from the data dict and submit each price
@@ -41,26 +41,39 @@ const submitData = async (
 
 export default submitData;
 
-
-const report = async(key: string, value: string, api: ApiPromise, pair: any) => {
-  console.log("submitting tx")
+const report = async (
+  key: string,
+  value: string,
+  api: ApiPromise,
+  pair: any,
+  config: LumenConfig
+) => {
   const unsub = await api.tx.oracle
-  .report(parseInt(key), parseInt(value))
-  .signAndSend(pair, (result) => {
-    console.log(`Current status is ${result.status}`);
-
-    if (result.status.isInBlock) {
-      console.log(
-        `Transaction included at blockHash ${result.status.asInBlock}`
-      );
-    } else if (result.status.isFinalized) {
-      console.log(
-        `Transaction finalized at blockHash ${result.status.asFinalized}`
-      );
-      unsub();
-    }
-  });
+    .report(parseInt(key), parseInt(value))
+    .signAndSend(pair, (result) => {
+      if (result.isReady) {
+        config.events.emit("submit:ready", {
+          blockHash: result.status.asInBlock,
+          assetName: table[key],
+          price: value,
+        });
+      }
+      if (result.status.isInBlock) {
+        config.events.emit("submit:inBlock", {
+          blockHash: result.status.asInBlock,
+          assetName: table[key],
+          price: value,
+        });
+      } else if (result.status.isFinalized) {
+        config.events.emit("submit:success", {
+          blockHash: result.status.asFinalized,
+          assetName: table[key],
+          price: value,
+        });
+        unsub();
+      }
+    });
   await timer(6000);
-}
+};
 
-const timer = ms => new Promise(res => setTimeout(res, ms))
+const timer = (ms) => new Promise((res) => setTimeout(res, ms));
