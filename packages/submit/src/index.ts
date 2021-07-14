@@ -17,7 +17,38 @@ const submitData = async (
   );
   // Construct
   const wsProvider = new WsProvider(config.rpc);
-  const api = await ApiPromise.create({ provider: wsProvider });
+  const api = await ApiPromise.create({ 
+    provider: wsProvider,
+    types: {
+      AccountInfo: 'AccountInfoWithTripleRefCount',
+        Address: 'MultiAddress',
+        LookupSource: 'MultiAddress',
+        XCurrencyId: {
+          chain_id: 'ChainId',
+          currency_id: 'Bytes',
+        },
+        CurrencyIdOf: 'CurrencyId',
+        CurrencyId: {
+          _enum: {
+            Token: 'TokenSymbol',
+          },
+        },
+        TokenSymbol: {
+          _enum: ['ACA', 'AUSD', 'DOT', 'XBTC', 'LDOT', 'RENBTC', 'SDN', 'PLM'],
+        },
+        AmountOf: 'Amount',
+        Amount: 'i128',
+        DataVersion: 'u64',
+        RequestIdentifier: 'u64',
+        SpecIndex: 'Vec<u8>',
+        CDP: {
+          liquidation_fee: 'Balance',
+          max_collateraization_rate: 'U256',
+          stability_fee: 'Balance',
+        },
+    } 
+  });
+  console.log("api created")
   // traverse from the data dict and submit each price
   for (const [key, value] of Object.entries(data)) {
     const unsub = await api.tx.oracle
