@@ -23,8 +23,10 @@
   },
   "dependencies": {
     "@digitalnative/lumen-config": "^0.0.0",
-    "@polkadot/api": "^4.15.1",
-    "@polkadot/keyring": "^6.9.1"
+    "@digitalnative/type-definitions": "1.1.9",
+    "@polkadot/api": "5.0.1",
+    "@polkadot/keyring": "^7.0.1",
+    "@polkadot/types": "5.0.2-6"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",

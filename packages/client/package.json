@@ -24,7 +24,11 @@
   "dependencies": {
     "@digitalnative/lumen-config": "^0.0.0",
     "@digitalnative/lumen-discord": "0.0.0",
-    "node-cron": "^3.0.0"
+    "node-cron": "^3.0.0",
+    "@digitalnative/type-definitions": "1.1.9",
+    "@polkadot/api": "5.0.1",
+    "@polkadot/keyring": "^7.0.1",
+    "@polkadot/types": "5.0.2-6"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",

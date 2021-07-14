@@ -35,6 +35,22 @@ class LumenConfig {
         // load config file
         fs.readFile("./lumen-config.json", "utf8", (err, jsonString) => {
           if (err) {
+            console.log("Configuration file not found");
+            // if config file is not found, make it with prompt
+            prompt.start();
+
+            prompt.get(properties, function(err, result) {
+              if (err) {
+                return onErr(err);
+              }
+              this.nomics = result.nomics;
+              this.finnhub = result.finnhub;
+              this.mnemonic = mnemonicGenerate();
+              console.log("Configuration is generated:");
+              console.log("  Nomics API Key: " + result.nomics);
+              console.log("  Finncdhub API Key: " + result.finnhub);
+              console.log("  Mnemonic: " + this.mnemonic);
+            });
             console.error(err);
           }
           const config = JSON.parse(jsonString);
@@ -43,42 +59,14 @@ class LumenConfig {
           this.mnemonic = config.mnemonic;
           this.rpc = config.rpc;
         });
-      } /*else {
-        console.log("Configuration file not found");
-        // if config file is not found, make it with prompt
-        prompt.start();
-
-        prompt.get(properties, function(err, result) {
-          if (err) {
-            return onErr(err);
-          }
-          this.nomics = result.nomics;
-          this.finnhub = result.finnhub;
-          this.mnemonic = mnemonicGenerate();
-          console.log("Configuration is generated:");
-          console.log("  Nomics API Key: " + result.nomics);
-          console.log("  Finncdhub API Key: " + result.finnhub);
-          console.log("  Mnemonic: " + this.mnemonic);
-        });
-
+      } else {
         // export it as lumen-config.json in working directory
         const config = {
           "nomics-api": this.nomics,
           "finnhub-api": this.finnhub,
           mnemonic: this.mnemonic,
         };
-
-        const jsonString = JSON.stringify(config);
-        fs.writeFile("./lumen-config.json", jsonString, (err) => {
-          if (err) {
-            console.log("Error writing file", err);
-          } else {
-            console.log(
-              `Successfully exported config file at ${process.cwd()}/lumen-config.json.`
-            );
-          }
-        });
-      } */
+      }
     } catch (err) {
       console.error(err);
     }

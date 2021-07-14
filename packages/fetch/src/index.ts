@@ -12,7 +12,7 @@ const fetchStockData = async (symbol, config) => {
     );
     const price = data.c;
     config.events.emit("fetch:succeed", { symbol, price });
-    return padTokenInput(String(price), 15);
+    return padTokenInput(String(price), 8);
   } catch (err) {
     console.log(err);
     const why = `failed to fetch stock data on: ${symbol}\nstatus: ${err.response &&
@@ -31,7 +31,7 @@ const fetchNomicsData = async (symbol, config) => {
     );
     const price = data[0].price;
     config.events.emit("fetch:succeed", { symbol, price });
-    return padTokenInput(price, 15);
+    return padTokenInput(price, 8);
   } catch (err) {
     const why = `failed to fetch coin data on :${symbol}\nstatus: ${err.response &&
       err.response.status}\nmessage: ${err.response && err.response.message}`;
