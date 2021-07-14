@@ -1,8 +1,8 @@
 {
   "name": "@digitalnative/lumen-submit",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Submission module for the oracle",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/submit#readme",
   "repository": "https://github.com/digitalnative/lumen/tree/master/packages/submit",
@@ -16,15 +16,16 @@
   },
   "keywords": [
     "cli",
-    "middlware"
+    "middleware"
   ],
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@digitalnative/lumen-config": "^0.0.0",
+    "@digitalnative/lumen-targets": "0.0.2",
     "@digitalnative/type-definitions": "1.1.9",
-    "@polkadot/api": "5.0.1",
+    "@polkadot/api": "^5.0.1",
     "@polkadot/keyring": "^7.0.1",
     "@polkadot/types": "5.0.2-6"
   },
