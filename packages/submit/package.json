@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@digitalnative/lumen-config": "^0.0.0",
+    "@digitalnative/lumen-config": "^0.4.0",
     "@digitalnative/lumen-targets": "^0.4.0",
     "@digitalnative/type-definitions": "1.1.9",
     "@polkadot/api": "^5.0.1",
