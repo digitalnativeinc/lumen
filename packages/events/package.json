@@ -4,10 +4,10 @@
   "description": "Utility for handling events in Houston",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/events#readme",
-  "repository": "https://github.com/digitalnative/lumen/tree/master/packages/events",
+  "homepage": "https://github.com/digitalnativeinc/lumen/tree/master/packages/events#readme",
+  "repository": "https://github.com/digitalnativeinc/lumen/tree/master/packages/events",
   "bugs": {
-    "url": "https://github.com/digitalnative/lumen/issues"
+    "url": "https://github.com/digitalnativeinc/lumen/issues"
   },
   "main": "dist/index.js",
   "scripts": {

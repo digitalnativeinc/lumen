@@ -4,10 +4,10 @@
   "description": "fetching module for the oracle",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "homepage": "https://github.com/digitalnative/lumen/tree/master/packages/fetch#readme",
-  "repository": "https://github.com/digitalnative/lumen/tree/master/packages/fetch",
+  "homepage": "https://github.com/digitalnativeinc/lumen/tree/master/packages/fetch#readme",
+  "repository": "https://github.com/digitalnativeinc/lumen/tree/master/packages/fetch",
   "bugs": {
-    "url": "https://github.com/digitalnative/lumen/issues"
+    "url": "https://github.com/digitalnativeinc/lumen/issues"
   },
   "main": "dist/index.js",
   "scripts": {
