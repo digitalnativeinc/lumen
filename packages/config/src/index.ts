@@ -25,41 +25,21 @@ function onErr(err) {
 class LumenConfig {
   [key: string]: any;
 
-  constructor() {
+  constructor({ dir = "./lumen-config.json" }) {
     const eventsOptions = this.eventManagerOptions(this);
     this.events = new EventManager(eventsOptions);
 
-    try {
-      if (fs.existsSync("./lumen-config.json")) {
-        //file exists
-        // load config file
-        const config = JSON.parse(
-          fs.readFileSync("./lumen-config.json", "utf8")
-        );
-        this.nomics = config.nomics;
-        this.finnhub = config.finnhub;
-        this.mnemonic = config.mnemonic;
-        this.rpc = config.rpc;
-      } else {
-        console.log("Configuration file not found");
-        // if config file is not found, make it with prompt
-        prompt.start();
-
-        prompt.get(properties, function(err, result) {
-          if (err) {
-            return onErr(err);
-          }
-          this.nomics = result.nomics;
-          this.finnhub = result.finnhub;
-          this.mnemonic = mnemonicGenerate();
-          console.log("Configuration is generated:");
-          console.log("  Nomics API Key: " + result.nomics);
-          console.log("  Finncdhub API Key: " + result.finnhub);
-          console.log("  Mnemonic: " + this.mnemonic);
-        });
+    if (fs.existsSync(dir)) {
+      //file exists
+      // load config file
+      const config = JSON.parse(fs.readFileSync(dir, "utf8"));
+      for (const [key, value] of Object.entries(config)) {
+        this[key] = value;
       }
-    } catch (err) {
-      console.error(err);
+      //this.nomics = config.nomics;
+      //this.finnhub = config.finnhub;
+      //this.mnemonic = config.mnemonic;
+      //this.rpc = config.rpc;
     }
   }
 
@@ -71,8 +51,8 @@ class LumenConfig {
     return { logger, muteLogging, subscribers };
   }
 
-  public static default(): LumenConfig {
-    return new LumenConfig();
+  public static default(dir): LumenConfig {
+    return new LumenConfig(dir);
   }
 }
 

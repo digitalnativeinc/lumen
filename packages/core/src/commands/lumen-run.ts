@@ -4,7 +4,7 @@ const commander = require("commander");
 const program = new commander.Command();
 
 program
-  .command("<name> [options]")
+  .command("<dir> [options]")
   .name("run")
   .usage("[options]")
   .option("--mock", "run an oracle with mock data")

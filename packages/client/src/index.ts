@@ -3,10 +3,9 @@ import fetchData from "@digitalnative/lumen-fetch";
 import submitData from "@digitalnative/lumen-submit";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 
-const runClient = async () => {
+const runClient = async (dir) => {
   const cron = require("node-cron");
-  const config = LumenConfig.default();
-  console.log(config);
+  const config = LumenConfig.default({ dir });
   const { events } = config;
   events.emit("client:start");
   const api = await polkadotApi(config);
