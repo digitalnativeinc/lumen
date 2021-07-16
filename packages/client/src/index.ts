@@ -6,6 +6,7 @@ import { ApiPromise, WsProvider } from "@polkadot/api";
 const runClient = async () => {
   const cron = require("node-cron");
   const config = LumenConfig.default();
+  console.log(config);
   const { events } = config;
   events.emit("client:start");
   const api = await polkadotApi(config);
