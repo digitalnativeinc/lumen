@@ -2,15 +2,15 @@ import { red, green, cyan, yellow } from "kleur";
 import * as similiarity from "string-similarity";
 
 export enum ConsoleMessage {
-  TITLE = "Houston",
-  BANNER = "Smart contract tool for cosmwasm",
+  TITLE = "Lumen",
+  BANNER = "A chain agnostic oracle client",
   ERROR = "ERROR: ",
   SUCCESS = "SUCCESS: ",
   INFO = "INFO: ",
   GENERATE = "GENERATE: ",
   CREATE = "CREATE: ",
   UPDATE = "UPDATE: ",
-  START_GENERATING = "Start generating contract boilerplate...",
+  START_GENERATING = "",
 }
 
 const newLine = "\n";
