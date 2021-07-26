@@ -5,7 +5,7 @@ import { showError, suggestCommand } from "../utils/logger.util";
 export const lumen = program
   .version("0.0.4")
   .description(
-    "A chain agnostic oracle client"
+    "A chain agnostic oracle client",
   )
   .name("lumen")
   .usage("<command> [arguments]")
@@ -15,7 +15,7 @@ export const lumen = program
   .on("command:*", function(operands: string[]) {
     showError(`error: unknown command '${operands[0]}'`);
     const availableCommands = program.commands.map((cmd: { name: () => any }) =>
-      cmd.name()
+      cmd.name(),
     );
     suggestCommand(operands[0], availableCommands);
     process.exitCode = 1;
