@@ -87,3 +87,7 @@ specifying errors in lumen
 ## `discord`
 
 Discord integration for the oracle client
+
+## `p2p`
+
+A libp2p network client framework for layer2 computation
