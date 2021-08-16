@@ -71,7 +71,8 @@ const report = async (
           price: value,
         });
         unsub();
-      }
+      } else if (result.status);
+      
     });
   await timer(6000);
 };

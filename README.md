@@ -31,6 +31,7 @@ Configure `lumen-config.json`
     "nomics": "<Nomics API Key>",
     "finnhub": "<Finnhub API Key>",
     "mnemonic": "<Mnemonic to generate an account>",
+    "socket": "<designated socket index>",
     "rpc": "<RPC endpoint address or domain>"
 }
 ```
