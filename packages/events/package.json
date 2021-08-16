@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-events",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "description": "Utility for handling events in Houston",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
