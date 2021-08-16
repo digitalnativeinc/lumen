@@ -11,6 +11,7 @@ const fetchStockData = async (symbol, config) => {
       `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${config.finnhub}`
     );
     const price = data.c;
+    // add error for finnhub price data showing 0$ for APHA
     config.events.emit("fetch:succeed", { symbol, price });
     return padTokenInput(String(price), 8);
   } catch (err) {

@@ -22,5 +22,6 @@
     "multiaddr": "^10.0.0",
     "protons": "^2.0.1",
     "uint8arrays": "^2.1.10"
-  }
+  },
+  "gitHead": "02a6962be8c9a36311a49bbdbaa004a92afd57f4"
 }

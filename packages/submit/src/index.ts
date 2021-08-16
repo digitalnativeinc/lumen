@@ -49,7 +49,7 @@ const report = async (
   config: LumenConfig
 ) => {
   const unsub = await api.tx.oracle
-    .report(parseInt(key), parseInt(value))
+    .report(parseInt(config.socket), parseInt(key), parseInt(value))
     .signAndSend(pair, (result) => {
       if (result.isReady) {
         config.events.emit("submit:ready", {
