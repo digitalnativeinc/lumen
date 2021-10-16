@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Core module for Lumen, a chain-agnostic oracle provider",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -35,7 +35,7 @@
     "middleware"
   ],
   "dependencies": {
-    "@digitalnative/lumen-client": "^0.4.5",
+    "@digitalnative/lumen-client": "^0.4.6",
     "@digitalnative/lumen-targets": "^0.4.5",
     "@digitalnative/type-definitions": "latest",
     "@liftr/tscov": "^1.4.7",

@@ -18,5 +18,5 @@
     },
     "fetch-build": "cd ../fetch && yarn && cd ../client && yarn && cd ../core && yarn"
   },
-  "version": "0.4.5"
+  "version": "0.4.6"
 }
