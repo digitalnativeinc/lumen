@@ -2,6 +2,7 @@ import LumenConfig from "@digitalnative/lumen-config";
 import { Keyring } from "@polkadot/keyring";
 import { ApiPromise } from "@polkadot/api";
 import { table } from "@digitalnative/lumen-targets";
+import { resolve } from "path";
 
 const submitData = async (
   data: { [key: string]: string },
@@ -71,8 +72,8 @@ const report = async (
           price: value,
         });
         unsub();
-      } else if (result.status);
-      
+        resolve();
+      }
     });
   await timer(6000);
 };
