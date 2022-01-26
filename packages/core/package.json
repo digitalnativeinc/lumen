@@ -36,6 +36,7 @@
   ],
   "dependencies": {
     "@digitalnative/lumen-client": "^0.4.6",
+    "@digitalnative/lumen-hunt": "^0.0.0",
     "@digitalnative/lumen-targets": "^0.4.5",
     "@digitalnative/type-definitions": "latest",
     "@liftr/tscov": "^1.4.7",

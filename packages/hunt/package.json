@@ -1,0 +1,42 @@
+{
+  "name": "@digitalnative/lumen-hunt",
+  "version": "0.0.0",
+  "description": "Liquidation hunter for stablecoin vaults",
+  "license": "Apache-2.0",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/digitalnativeinc/lumen/tree/master/packages/hunt#readme",
+  "repository": "https://github.com/digitalnativeinc/lumen/tree/master/packages/hunt",
+  "bugs": {
+    "url": "https://github.com/digitalnativeinc/lumen/issues"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build"
+  },
+  "keywords": [
+    "cli",
+    "middleware"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@digitalnative/lumen-config": "^0.4.5",
+    "@digitalnative/lumen-discord": "^0.4.5",
+    "@digitalnative/type-definitions": "latest",
+    "@polkadot/api": "^5.0.1",
+    "@polkadot/keyring": "^7.0.1",
+    "@polkadot/types": "5.0.2-6",
+    "@polkadot/util": "^7.0.1",
+    "@polkadot/util-crypto": "^7.0.1",
+    "ethers": "^5.5.3",
+    "node-cron": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "ts-node": "8.10.2",
+    "typescript": "4.3.5"
+  },
+  "gitHead": "f36c0967b305ed4ef2e2ed188f959b31aea9cfa4"
+}

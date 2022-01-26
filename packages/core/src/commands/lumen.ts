@@ -12,6 +12,9 @@ export const lumen = program
   .command("run [options]", "run lumen oracle provider", {
     executableFile: "./commands/lumen-run",
   })
+  .command("hunt [options]", "run lumen liquidation hunter", {
+    executableFile: "./commands/lumen-hunt",
+  })
   .on("command:*", function(operands: string[]) {
     showError(`error: unknown command '${operands[0]}'`);
     const availableCommands = program.commands.map((cmd: { name: () => any }) =>
