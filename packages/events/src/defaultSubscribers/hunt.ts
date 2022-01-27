@@ -43,7 +43,7 @@ export default {
         lfr,
         sfr,
         on,
-        diagnosis,
+        isValidCDP,
       }) {
         this.logger.log(` 🗃 Vault #${i} status`);
         this.logger.log(
@@ -58,16 +58,16 @@ export default {
         this.logger.log(
           `
             <⚙️ CDP setting ⚙️> \n
-            Minimal Collateralization Ratio(MCR): ${mcr} \n
-            Liquidation Fee Ratio(LFR): ${lfr} \n
-            Stability Fee(SFR): ${sfr} \n
+            Minimal Collateralization Ratio(MCR): ${mcr/100000}% \n
+            Liquidation Fee Ratio(LFR): ${lfr/100000}% \n
+            Stability Fee(SFR): ${sfr/100000}% \n
             Asset currently open for borrow: ${on}  \n
             `
         );
         this.logger.log(
           `
             <🩺  Health 🩺> \n
-            ${diagnosis} \n
+            ${isValidCDP} \n
             `
         );
       },

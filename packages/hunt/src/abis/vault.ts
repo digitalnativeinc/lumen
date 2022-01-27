@@ -1,4 +1,4 @@
-const vaultABI = [
+export const vaultABI = [
     {
       "anonymous": false,
       "inputs": [

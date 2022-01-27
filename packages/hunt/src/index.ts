@@ -6,6 +6,7 @@ import "./abis";
 import { Contract, ethers } from "ethers";
 import { vaultFactoryABI } from "./abis/vaultFactory";
 import { vaultManagerABI } from "./abis/vaultManager";
+import { vaultABI } from "./abis/vault";
 import { erc20ABI } from "./abis/erc20";
 
 const runHunter = async (dir) => {
@@ -15,7 +16,7 @@ const runHunter = async (dir) => {
   events.emit("hunt:start");
   const api = await ethersApi(config);
   // register cron job to execute in every minute
-  cron.schedule("*/1 * * * * *", async function() {
+  cron.schedule("*/30 * * * * *", async function() {
     events.emit("hunt:next");
     await getVaultFactory(api, config, events);
   });
@@ -45,60 +46,72 @@ async function polkadotApi(config: LumenConfig) {
 
 async function getVaultFactory(api, config: LumenConfig, events) {
   const vaultFactory = new Contract(config.factory, vaultFactoryABI, api);
-  const vault = new Contract("0x0", vaultABI, api);
-  const erc20 = new Contract("0x0", erc20ABI, api);
   // get total number of vaults
-  const vaults = await vaultFactory.allVaultsLength().toNumber();
+  const vaults = await vaultFactory.allVaultsLength();
   const vaultManagerAddr = await vaultFactory.manager();
   const vaultManager = new Contract(vaultManagerAddr, vaultManagerABI, api);
   events.emit("hunt:scan", { vaults });
-  // investigate each
-  for (let i = 0; i <= vaults; i++) {
-    // get vault address from factory
-    let vaultAddr = await vaultFactory.getVault(i);
-    // get info from vault
-    let collateral = await vault.attach(vaultAddr).collateral();
-    let debt = await vault.attach(vaultAddr).debt();
-    // get settings from vault manager
-    const [mcr, lfr, sfr, on] = await vaultManager.getCDPConfig(collateral);
-    console.log(` MCR: ${mcr}% \n LFR: ${lfr}% \n SFR: ${sfr}% \n on: ${on}`);
-    // get each amount stored in the cdp
-    let cAmount = await erc20.attach(collateral).balanceOf(vaultAddr);
-    let dAmount = await erc20.attach(debt).balanceOf(vaultAddr);
-    // get whether the position is valid
-    let isValidCDP = await vaultManager.isValidCDP(
-      collateral,
-      debt,
-      cAmount,
-      dAmount
-    );
-    // emit each vault status
-    events.emit("hunt:vault", {
-      i,
-      collateral,
-      debt,
-      cAmount,
-      dAmount,
-      mcr,
-      lfr,
-      sfr,
-      on,
-      isValidCDP,
-    });
-    // check vault health and react
-    if (isValidCDP) {
-      events.emit("hunt:vaultSafe");
-    } else {
-      events.emit("hunt:vaultFail");
-      // initiate liquidation tx
-      try {
-        let liquidate = await vault.attach(vaultAddr).liquidate();
-        events.emit("hunt:liquidate");
-        await liquidate.wait();
-        events.emit("hunt:liquidateSuccess", {});
-      } catch (e) {
-        events.emit("hunt:fail", { e });
-      }
+  const serial = Array.from({ length: vaults.toNumber() }, (v, i) => i);
+  for (let i of serial) {
+    try {
+      await investigate(i, vaultManager, vaultFactory, api, events);
+    } catch (e) {
+      console.log(e);
     }
+  }
+  events("hunt:results");
+}
+
+async function investigate(i, vaultManager, vaultFactory, api, events) {
+  // get vault address from factory
+  let vaultAddr = await vaultFactory.getVault(i);
+  const vault = new Contract(vaultAddr, vaultABI, api);
+  // get info from vault
+  let collateral = await vault.collateral();
+  let debt = await vault.debt();
+  const erc20_1 = new Contract(collateral, erc20ABI, api);
+  let [mcr, lfr, sfr, cDecimals, on] = await vaultManager.getCDPConfig(
+    collateral
+  );
+  let cAmount = await erc20_1.attach(collateral).balanceOf(vaultAddr);
+  let dAmount = await vault.borrow();
+  // get whether the position is valid
+  
+  const isValidCDP = await vaultManager.isValidCDP(
+    collateral,
+    debt,
+    cAmount,
+    dAmount
+  );
+
+  // emit each vault status
+  events.emit("hunt:vault", {
+    i,
+    collateral,
+    debt,
+    cAmount,
+    dAmount,
+    mcr,
+    lfr,
+    sfr,
+    on,
+    isValidCDP,
+  });
+
+  
+  // check vault health and react
+  if (isValidCDP) {
+    events.emit("hunt:vaultSafe");
+  } else {
+    events.emit("hunt:vaultFail");
+    // initiate liquidation tx
+    try {
+      events.emit("hunt:liquidate");      
+      let liquidate = await vault.liquidate();
+      await liquidate.wait();
+      events.emit("hunt:liquidateSuccess", {});
+    } catch (e) {
+      events.emit("hunt:fail", { e });
+    }   
   }
 }
