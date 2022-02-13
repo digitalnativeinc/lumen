@@ -9,15 +9,20 @@ const runClient = async (dir) => {
   const { events } = config;
   events.emit("client:start");
   const api = await polkadotApi(config);
-  // register cron job to execute in every minute
-  cron.schedule("*/90 * * * * *", async function() {
+  // register setTimeout to execute in every minute
+  await loop(api, config);
+  events.emit("client:init");
+};
+
+async function loop(api, config) {
+    setTimeout(async function() {
     events.emit("client:next");
     // fetch data
     const data = await fetchData(false, config);
     await submitData(data, config, api);
-  });
-  events.emit("client:init");
-};
+    loop(api, config);
+  }, 10);
+}
 
 export default runClient;
 

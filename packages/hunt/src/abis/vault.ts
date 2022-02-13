@@ -67,6 +67,18 @@ export const vaultABI = [
         {
           "indexed": false,
           "internalType": "uint256",
+          "name": "remainderC",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "remainderD",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
           "name": "closingFee",
           "type": "uint256"
         }
@@ -253,19 +265,6 @@ export const vaultABI = [
     },
     {
       "inputs": [],
-      "name": "createdAt",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "debt",
       "outputs": [
         {
@@ -305,47 +304,6 @@ export const vaultABI = [
           "internalType": "address",
           "name": "",
           "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getDebt",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getStatus",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "collateral",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "cBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "address",
-          "name": "debt",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "dBalance",
-          "type": "uint256"
         }
       ],
       "stateMutability": "view",
@@ -414,6 +372,19 @@ export const vaultABI = [
     },
     {
       "inputs": [],
+      "name": "lastUpdated",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "liquidate",
       "outputs": [],
       "stateMutability": "nonpayable",
@@ -427,6 +398,19 @@ export const vaultABI = [
           "internalType": "address",
           "name": "",
           "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "outstandingPayment",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
@@ -507,7 +491,11 @@ export const vaultABI = [
       ],
       "name": "withdrawCollateralNative",
       "outputs": [],
-      "stateMutability": "payable",
+      "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
     }
   ]

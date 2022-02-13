@@ -30,8 +30,7 @@
     "@polkadot/types": "5.0.2-6",
     "@polkadot/util": "^7.0.1",
     "@polkadot/util-crypto": "^7.0.1",
-    "ethers": "^5.5.3",
-    "node-cron": "^3.0.0"
+    "ethers": "^5.5.3"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",

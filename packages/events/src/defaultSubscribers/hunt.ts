@@ -28,13 +28,14 @@ export default {
     "hunt:scan": [
       function({ vaults }) {
         this.logger.log(
-          `[hunt] 🔢 There are ${vaults} vaults to be investigated for liquidation`
+          `[hunt] 🕵️‍♀️ Number of vaults to be investigated: ${vaults}`
         );
       },
     ],
     "hunt:vault": [
       function({
         i,
+        vaultAddr,
         collateral,
         debt,
         cAmount,
@@ -43,31 +44,23 @@ export default {
         lfr,
         sfr,
         on,
-        isValidCDP,
+        status,
+        HP,
       }) {
-        this.logger.log(` 🗃 Vault #${i} status`);
-        this.logger.log(
-          `
-            < 📊 Balances 📊 > \n
+        console.log(
+          `\n \t🗃  Vault #${i} : ${vaultAddr}  \n
+            --- 📊 Balances 📊 --- \n
             collateral: ${collateral} \n
             debt: ${debt} \n
             collateral amount: ${cAmount} \n
             debt amount: ${dAmount} \n
-            `
-        );
-        this.logger.log(
-          `
-            <⚙️ CDP setting ⚙️> \n
-            Minimal Collateralization Ratio(MCR): ${mcr/100000}% \n
-            Liquidation Fee Ratio(LFR): ${lfr/100000}% \n
-            Stability Fee(SFR): ${sfr/100000}% \n
+            ==🧮 CDP setting 🧮== \n
+            Minimal Collateralization Ratio(MCR): ${mcr / 100000}% \n
+            Liquidation Fee Ratio(LFR): ${lfr / 100000}% \n
+            Stability Fee(SFR): ${sfr / 100000}% \n
             Asset currently open for borrow: ${on}  \n
-            `
-        );
-        this.logger.log(
-          `
-            <🩺  Health 🩺> \n
-            ${isValidCDP} \n
+            +🏥  Health 🏥+ \n
+            ${status} HP: ${HP} \n
             `
         );
       },
@@ -87,11 +80,11 @@ export default {
       },
     ],
     "hunt:liquidateSuccess": [
-        function() {
-            this.logger.log(
-                `[hunt] ✨ Liquidation has been succesfully finalized by the hunter in the blockchain! Now bounty is sent to the hunter account.`
-            )
-        }
+      function() {
+        this.logger.log(
+          `[hunt] ✨ Liquidation has been succesfully finalized by the hunter in the blockchain! Now bounty is sent to the hunter account.`
+        );
+      },
     ],
     "hunt:fail": [
       function({ error }) {

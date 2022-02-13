@@ -172,6 +172,19 @@ export const vaultManagerABI = [
       "inputs": [
         {
           "indexed": false,
+          "internalType": "uint256",
+          "name": "desiredSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetDesiredSupply",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
           "internalType": "address",
           "name": "feeTo",
           "type": "address"
@@ -513,6 +526,25 @@ export const vaultManagerABI = [
           "type": "address"
         }
       ],
+      "name": "getExpiary",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "collateral_",
+          "type": "address"
+        }
+      ],
       "name": "getLFR",
       "outputs": [
         {
@@ -688,6 +720,11 @@ export const vaultManagerABI = [
           "type": "uint256"
         },
         {
+          "internalType": "uint256",
+          "name": "expiary_",
+          "type": "uint256"
+        },
+        {
           "internalType": "bool",
           "name": "on",
           "type": "bool"
@@ -746,6 +783,19 @@ export const vaultManagerABI = [
           "internalType": "bool",
           "name": "",
           "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastRebase",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
