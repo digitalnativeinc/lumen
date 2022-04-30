@@ -15,8 +15,9 @@ const runClient = async (dir) => {
 };
 
 async function loop(api, config) {
-    setTimeout(async function() {
-    events.emit("client:next");
+  setTimeout(async function() {
+    const { events } = config;
+    events.emit("client:start");
     // fetch data
     const data = await fetchData(false, config);
     await submitData(data, config, api);
