@@ -1,13 +1,13 @@
 {
-  "name": "p2p",
+  "name": "@digitalnative/p2p",
   "version": "0.4.11",
-  "description": "",
+  "description": "p2p client implementation",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "it-pipe": "^1.1.0",
     "libp2p": "^0.32.1",
@@ -23,5 +23,5 @@
     "protons": "^2.0.1",
     "uint8arrays": "^2.1.10"
   },
-  "gitHead": "2e520c4f4e5206583b1bf4ccbc4e486a8cb81981"
+  "gitHead": "c45d76cd47dbc11abb91da659405f627e650bdcf"
 }
