@@ -20,18 +20,19 @@
   },
   "scripts": {
     "start": "npm run build && node dist/src/server.js",
-    "build": "tsc",
+    "build": "npm run build-ts",
     "test": "jest --forceExit --coverage --verbose",
     "lint": "eslint \"**/*.ts\"",
     "format": "prettier --write .",
-    "watch": "tsc -w",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "dependencies": {
     "@digitalnative/lumen-config": "^0.4.7",
-    "discord.js": "^12.3.x"
+    "discord.js": "12.3.x"
   },
   "devDependencies": {
     "@types/jest": "26.0.x",
@@ -52,7 +53,7 @@
     "istanbul-api": "3.0.x",
     "istanbul-reports": "3.0.x",
     "jest": "26.4.x",
-    "prettier": "2.1.2",
+    "prettier": "^2.1.2",
     "prettier-plugin-organize-imports": "^1.1.1",
     "ts-jest": "26.4.x",
     "ts-mockito": "2.6.x",
