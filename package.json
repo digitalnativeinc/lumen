@@ -2,29 +2,30 @@
   "name": "@digitalnative/lumen",
   "private": true,
   "scripts": {
-    "bootstrap": "nx run @digitalnative/lumen:build",
-    "prepare": "lerna run prepare --stream --concurrency=1",
+    "bootstrap": "lerna bootstrap",
+    "build": "nx run @digitalnative/lumen:build",
     "clean": "lerna clean",
     "publish": "yarn run bootstrap && lerna publish",
+    "audit": "lerna run audit",
     "test": "lerna run test --stream --concurrency=1 -- --colors"
   },
   "devDependencies": {
+    "@nrwl/nx-cloud": "latest",
     "coveralls": "^3.0.2",
     "eslint": "^5.7.0",
     "husky": "^1.2.0",
     "lerna": "^4.0.0",
     "lint-staged": "^7.3.0",
+    "nx": "14.2.4",
     "nyc": "^13.0.1",
     "prettier": "1.14.3",
     "prs-merged-since": "^1.1.0",
-    "nx": "14.2.4",
-    "@nrwl/nx-cloud": "latest"
+    "yarn-audit-fix": "^9.3.1"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": 
+  [
+    "packages/*"
+  ],
   "publishConfig": {
     "access": "public"
   },

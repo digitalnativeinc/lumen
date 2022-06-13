@@ -19,6 +19,7 @@
     "test:unit": "mocha src/**/*.spec.ts",
     "lint": "tslint -p . --fix",
     "build": "npm run clean:some && tsc -p .",
+    "audit": "npm_config_yes=true npx yarn-audit-fix",
     "prepare": "yarn build",
     "global": "npm i -g && lumen run",
     "clean:some": "rm -rf ./dist ./docs",

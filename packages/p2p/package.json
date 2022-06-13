@@ -9,7 +9,8 @@
     "client"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "audit": "npm_config_yes=true npx yarn-audit-fix"
   },
   "license": "Apache-2.0",
   "dependencies": {

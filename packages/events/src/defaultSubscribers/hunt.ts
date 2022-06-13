@@ -101,12 +101,12 @@ export default {
         this.logger.log(`${error}`);
       },
     ],
-    "hunt:changingNetwork": [
-      function({rpc}) {
+    "hunt:networkChange": [
+      function({link}) {
         this.logger.log(
-          `[hunt] 🔗  Connecting to ${rpc}`
-        )
+          `[hunt] 🔗  Connecting to ${link}`
+        );
       }
-    ]
+    ],
   },
 };

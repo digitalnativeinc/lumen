@@ -13,7 +13,8 @@
   "scripts": {
     "build": "tsc",
     "prepare": "yarn build",
-    "test": "yarn build && mocha --exit -r ts-node/register test/**/*.test.ts"
+    "test": "yarn build && mocha --exit -r ts-node/register test/**/*.test.ts",
+    "audit": "npm_config_yes=true npx yarn-audit-fix"
   },
   "types": "dist/index.d.ts",
   "dependencies": {

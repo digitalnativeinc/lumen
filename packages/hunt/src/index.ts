@@ -29,8 +29,9 @@ async function loop(config, events) {
 
 async function hunt(config: LumenConfig, events) {
     for (let i = 0; i < config.ethRpc.length; i++) {
-      events.emit("hunt:changingNetwork", config.ethRpc[i]);
-      const api = await ethersApi(config.ethRpc[i], config.private);
+      const link = config.ethRpc[i] 
+      events.emit("hunt:networkChange", { link });
+      const api = await ethersApi(link, config.private);
       await huntNetwork(api, config.factory[i], events);
     }
 }
@@ -122,7 +123,7 @@ async function investigate(i, vaultManager, vaultFactory, api, events) {
 async function getHealthCheck(collateral, debt, cAmount, dAmount, vaultManager, mcr) {
     const cPrice = await vaultManager.getAssetPrice(collateral)
     const dPrice = await vaultManager.getAssetPrice(debt)
-    const dValue = dPrice.mul(dAmount).toNumber() > 0 ? dPrice.mul(dAmount) : 0.00000000001   
+    const dValue = dPrice.mul(dAmount).gt(0) ? dPrice.mul(dAmount) : 0.001   
     const cdpRatioPercent = cPrice.mul(cAmount).div(dValue) * 100
     // HP = (MCR + 50%) - (cdpRatio in percentage - mcr)
     const HP = 100 * (cdpRatioPercent - (mcr/100000)) / 50
