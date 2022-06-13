@@ -20,5 +20,5 @@
     "fetch-build": "cd ../fetch && yarn && cd ../client && yarn && cd ../core && yarn"
   },
   "useNx": true,
-  "version": "0.4.11"
+  "version": "0.4.12"
 }
