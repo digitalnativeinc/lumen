@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-hunt",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "description": "Liquidation hunter for stablecoin vaults",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@digitalnative/lumen-config": "^0.4.13",
-    "@digitalnative/lumen-discord": "^0.4.13",
+    "@digitalnative/lumen-discord": "^0.4.14",
     "@digitalnative/type-definitions": "latest",
     "@polkadot/api": "^5.0.1",
     "@polkadot/keyring": "^7.0.1",
