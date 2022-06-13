@@ -10,26 +10,33 @@ const runHunter = async (dir) => {
   const config = LumenConfig.default({ dir });
   const { events } = config;
   events.emit("hunt:start");
-  const api = await ethersApi(config);
   // register setTimeout to execute in every minute
-  await loop(api, config, events);
+  await loop(config, events);
   events.emit("hunt:init");
 };
 
 export default runHunter;
 
-async function loop(api, config, events) {
+async function loop(config, events) {
     setTimeout(async function() {
     events.emit("hunt:next");
-    await getVaultFactory(api, config, events);
-    loop(api, config, events);
+    await hunt(config, events);
+    loop(config, events);
     }, 
-    10);
+    1000);
 }
 
 
-async function getVaultFactory(api, config: LumenConfig, events) {
-  const vaultFactory = new Contract(config.factory, vaultFactoryABI, api);
+async function hunt(config: LumenConfig, events) {
+    for (let i = 0; i < config.rpc.length; i++) {
+      events.emit("hunt:changingNetwork");
+      const api = await ethersApi(config.rpc[i], config.private);
+      await huntNetwork(api, config.factory[i], events);
+    }
+}
+
+async function huntNetwork(api, factory, events) {
+  const vaultFactory = new Contract(factory, vaultFactoryABI, api);
   // get total number of vaults
   const vaults = await vaultFactory.allVaultsLength();
   const vaultManagerAddr = await vaultFactory.manager();

@@ -31,7 +31,6 @@ function runBot(dir: any) {
   });
 
   client.on('error', (e) => {
-    // show error 
     console.error('Discord client error!', e);
     client.user?.setPresence({
       status: 'dnd',

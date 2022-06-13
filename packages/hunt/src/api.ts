@@ -3,9 +3,9 @@ import { Contract, ethers, Wallet } from "ethers";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 
 
-export async function ethersApi(config: LumenConfig) {
-    let provider = new ethers.providers.JsonRpcProvider(config.ethProvider);
-    let walletWithProvider = new Wallet(config.private, provider);
+export async function ethersApi(ethProvider, privateKey) {
+    let provider = new ethers.providers.JsonRpcProvider(ethProvider);
+    let walletWithProvider = new Wallet(privateKey, provider);
     return walletWithProvider;
   }
   
