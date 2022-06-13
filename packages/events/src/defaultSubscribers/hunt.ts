@@ -101,7 +101,7 @@ export default {
         this.logger.log(`${error}`);
       },
     ],
-    "hunt:ChangingNetwork": [
+    "hunt:changingNetwork": [
       function({rpc}) {
         this.logger.log(
           `[hunt] 🔗  Connecting to ${rpc}`

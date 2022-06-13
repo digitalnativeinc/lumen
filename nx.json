@@ -1,0 +1,49 @@
+{
+  "name": "@digitalnative/lumen",
+  "extends": "nx/presets/npm.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "prepare",
+          "test",
+          "test:unit",
+          "lint",
+          "global",
+          "clean:some",
+          "clean:all",
+          "refresh",
+          "tscov",
+          "tscov:d",
+          "publish-package",
+          "docs",
+          "format",
+          "build-ts",
+          "watch-ts",
+          "debug",
+          "watch-debug"
+        ],
+        "accessToken": "ZmYxZTYxYWUtMDU3NS00ODk1LWFhZDgtZGNjMzg1Y2Q4MzVkfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "prepare": [
+      {
+        "target": "prepare",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

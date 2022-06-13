@@ -1,13 +1,12 @@
 {
-  "name": "lumen",
+  "name": "@digitalnative/lumen",
   "private": true,
   "scripts": {
     "bootstrap": "nx bootstrap --no-ci",
     "prepare": "lerna run prepare --stream --concurrency=1",
     "clean": "lerna clean",
-    "publish": "lerna publish",
-    "test": "lerna run test --stream --concurrency=1 -- --colors",
-    "ci": "./scripts/ci.sh"
+    "publish": "lerna run build && lerna publish",
+    "test": "lerna run test --stream --concurrency=1 -- --colors"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",

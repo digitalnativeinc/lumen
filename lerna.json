@@ -15,10 +15,6 @@
     },
     "fetch-build": "cd ../fetch && yarn && cd ../client && yarn && cd ../core && yarn"
   },
-<<<<<<< HEAD
   "useNx": true,
   "version": "0.4.7"
-=======
-  "version": "0.4.8"
->>>>>>> b3c2638264c33d2c465a3a40736fa5f96a6b3831
 }
