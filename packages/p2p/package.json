@@ -4,6 +4,10 @@
   "description": "p2p client implementation",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "main": "index.js",
+  "keywords": [
+    "p2p",
+    "client"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +27,8 @@
     "protons": "^2.0.1",
     "uint8arrays": "^2.1.10"
   },
-  "gitHead": "c45d76cd47dbc11abb91da659405f627e650bdcf"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "59a937440bf34214fedcb118b91e4f7312607ea9"
 }
