@@ -52,7 +52,7 @@
     "istanbul-api": "3.0.x",
     "istanbul-reports": "3.0.x",
     "jest": "26.4.x",
-    "prettier": "2.1.2",
+    "prettier": "^2.1.2",
     "prettier-plugin-organize-imports": "^1.1.1",
     "ts-jest": "26.4.x",
     "ts-mockito": "2.6.x",
