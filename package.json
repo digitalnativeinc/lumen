@@ -6,8 +6,7 @@
     "prepare": "lerna run prepare --stream --concurrency=1",
     "clean": "lerna clean",
     "publish": "lerna publish",
-    "test": "lerna run test --stream --concurrency=1 -- --colors",
-    "ci": "./scripts/ci.sh"
+    "test": "lerna run test --stream --concurrency=1 -- --colors"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",

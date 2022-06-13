@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@digitalnative/lumen-config": "^0.4.7",
-    "discord.js": "12.3.x"
+    "discord.js": "^12.3.x"
   },
   "devDependencies": {
     "@types/jest": "26.0.x",
