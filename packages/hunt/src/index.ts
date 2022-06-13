@@ -1,13 +1,10 @@
 import LumenConfig from "@digitalnative/lumen-config";
-import fetchData from "@digitalnative/lumen-fetch";
-import submitData from "@digitalnative/lumen-submit";
-import { ApiPromise, WsProvider } from "@polkadot/api";
-import { Contract, ethers } from "ethers";
+import { Contract, ethers, Wallet } from "ethers";
 import { vaultFactoryABI } from "./abis/vaultFactory";
 import { vaultManagerABI } from "./abis/vaultManager";
 import { vaultABI } from "./abis/vault";
 import { erc20ABI } from "./abis/erc20";
-import { BN } from "@polkadot/util";
+import { ethersApi, polkadotApi } from "./api";
 
 const runHunter = async (dir) => {
   const config = LumenConfig.default({ dir });
@@ -30,24 +27,6 @@ async function loop(api, config, events) {
     10);
 }
 
-async function ethersApi(config: LumenConfig) {
-  let provider = new ethers.providers.JsonRpcProvider(config.ethProvider);
-  let wallet = ethers.Wallet.fromMnemonic(config.mnemonic);
-  let walletWithProvider = wallet.connect(provider);
-  return walletWithProvider;
-}
-
-async function polkadotApi(config: LumenConfig) {
-  const provider = new WsProvider(config.rpc);
-  const definitions = require("@digitalnative/type-definitions/opportunity");
-  let types = definitions.types[0].types;
-  const api = await new ApiPromise({
-    provider,
-    types,
-  });
-  await api.isReady;
-  return api;
-}
 
 async function getVaultFactory(api, config: LumenConfig, events) {
   const vaultFactory = new Contract(config.factory, vaultFactoryABI, api);
@@ -56,7 +35,7 @@ async function getVaultFactory(api, config: LumenConfig, events) {
   const vaultManagerAddr = await vaultFactory.manager();
   const vaultManager = new Contract(vaultManagerAddr, vaultManagerABI, api);
   events.emit("hunt:scan", { vaults });
-  const serial = Array.from({ length: vaults.toNumber() }, (v, i) => i);
+  const serial = Array.from({ length: vaults.toNumber() }, (v, i) => i).reverse();
   for (let i of serial) {
     try {
       await investigate(i, vaultManager, vaultFactory, api, events);
@@ -64,7 +43,7 @@ async function getVaultFactory(api, config: LumenConfig, events) {
       console.log(e);
     }
   }
-  //events("hunt:results");
+  //events("hunt:results"); 
 }
 
 async function investigate(i, vaultManager, vaultFactory, api, events) {
@@ -117,6 +96,8 @@ async function investigate(i, vaultManager, vaultFactory, api, events) {
   // check vault health and react
   if (isValidCDP) {
     events.emit("hunt:vaultSafe");
+  } else if (cAmount == 0) {
+    events.emit("hunt:vaultLiquidated")
   } else {
     events.emit("hunt:vaultFail");
     // initiate liquidation tx
@@ -134,18 +115,18 @@ async function investigate(i, vaultManager, vaultFactory, api, events) {
 async function getHealthCheck(collateral, debt, cAmount, dAmount, vaultManager, mcr) {
     const cPrice = await vaultManager.getAssetPrice(collateral)
     const dPrice = await vaultManager.getAssetPrice(debt)
-    const cdpRatioPercent = cPrice.mul(cAmount).div(dPrice.mul(dAmount)) * 100
-    cdpRatioPercent - mcr/100000
+    const dValue = dPrice.mul(dAmount).toNumber() > 0 ? dPrice.mul(dAmount) : 0.00000000001   
+    const cdpRatioPercent = cPrice.mul(cAmount).div(dValue) * 100
     // HP = (MCR + 50%) - (cdpRatio in percentage - mcr)
-    const HP = 100 * (cdpRatioPercent - mcr/100000) / 50
+    const HP = 100 * (cdpRatioPercent - (mcr/100000)) / 50
     return HP;
 }
 
 function getHPStatus(HP) {
     if (HP <= 0) { return '💀'; } else
     if (HP <= 30) { return '🚑' } else
-    if (HP <= 50) { return '🖤'}
-    if (HP <= 80) { return '💛'}
-    if (HP <= 100) { return '💖'}
+    if (HP <= 50) { return '🖤'} else
+    if (HP <= 80) { return '💛'} else
+    if (HP <= 100) { return '💖'} else
     if (HP > 100) { return '💎' }
 }

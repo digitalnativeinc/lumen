@@ -1,14 +1,11 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "name": "lumen",
+  "packages": ["packages/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
+      "npmClientArgs": ["--no-package-lock"]
     },
     "publish": {
       "allowBranch": "main"
@@ -18,5 +15,6 @@
     },
     "fetch-build": "cd ../fetch && yarn && cd ../client && yarn && cd ../core && yarn"
   },
+  "useNx": true,
   "version": "0.4.7"
 }

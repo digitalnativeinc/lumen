@@ -9,3 +9,4 @@ yarn.lock
 package-lock.json
 packages/core/lumen-config.json
 lumen-config.json
+nx.json

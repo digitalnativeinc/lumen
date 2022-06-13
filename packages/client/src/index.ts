@@ -4,7 +4,6 @@ import submitData from "@digitalnative/lumen-submit";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 
 const runClient = async (dir) => {
-  const cron = require("node-cron");
   const config = LumenConfig.default({ dir });
   const { events } = config;
   events.emit("client:start");
@@ -16,7 +15,7 @@ const runClient = async (dir) => {
 
 async function loop(api, config) {
     setTimeout(async function() {
-    events.emit("client:next");
+    config.events.emit("client:next");
     // fetch data
     const data = await fetchData(false, config);
     await submitData(data, config, api);

@@ -72,6 +72,13 @@ export default {
         );
       },
     ],
+    "hunt:vaultLiquidated": [
+      function() {
+        this.logger.log(
+          `[hunt] ❎ Vault is already liquidated. moving to the next one...`
+        );
+      },
+    ],
     "hunt:vaultFail": [
       function() {
         this.logger.log(
@@ -94,5 +101,12 @@ export default {
         this.logger.log(`${error}`);
       },
     ],
+    "hunt:ChangingNetwork": [
+      function({rpc}) {
+        this.logger.log(
+          `[hunt] 🔗  Connecting to ${rpc}`
+        )
+      }
+    ]
   },
 };

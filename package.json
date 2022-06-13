@@ -2,7 +2,7 @@
   "name": "lumen",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap --no-ci",
+    "bootstrap": "nx bootstrap --no-ci",
     "prepare": "lerna run prepare --stream --concurrency=1",
     "clean": "lerna clean",
     "publish": "lerna publish",
@@ -17,7 +17,9 @@
     "lint-staged": "^7.3.0",
     "nyc": "^13.0.1",
     "prettier": "1.14.3",
-    "prs-merged-since": "^1.1.0"
+    "prs-merged-since": "^1.1.0",
+    "nx": "14.2.4",
+    "@nrwl/nx-cloud": "latest"
   },
   "workspaces": {
     "packages": [

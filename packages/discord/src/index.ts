@@ -1,4 +1,3 @@
-import client as bot from './server'
+import runBot from './server';
 
-
-export default bot
+export default runBot;
