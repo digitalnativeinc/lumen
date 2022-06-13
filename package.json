@@ -5,7 +5,7 @@
     "bootstrap": "nx bootstrap --no-ci",
     "prepare": "lerna run prepare --stream --concurrency=1",
     "clean": "lerna clean",
-    "publish": "lerna publish",
+    "publish": "lerna run build && lerna publish",
     "test": "lerna run test --stream --concurrency=1 -- --colors"
   },
   "devDependencies": {
