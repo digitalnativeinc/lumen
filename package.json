@@ -1,5 +1,5 @@
 {
-  "name": "lumen",
+  "name": "@digitalnative/lumen",
   "private": true,
   "scripts": {
     "bootstrap": "nx bootstrap --no-ci",
