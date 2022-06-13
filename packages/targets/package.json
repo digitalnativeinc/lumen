@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-targets",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "List of targets to fetch and submit for lumen",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
