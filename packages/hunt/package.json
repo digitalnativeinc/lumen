@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen-hunt",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "description": "Liquidation hunter for stablecoin vaults",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
