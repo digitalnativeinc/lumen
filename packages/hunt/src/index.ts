@@ -29,7 +29,7 @@ async function loop(config, events) {
 
 async function hunt(config: LumenConfig, events) {
     for (let i = 0; i < config.ethRpc.length; i++) {
-      events.emit("hunt:changingNetwork");
+      events.emit("hunt:changingNetwork", config.ethRpc[i]);
       const api = await ethersApi(config.ethRpc[i], config.private);
       await huntNetwork(api, config.factory[i], events);
     }
