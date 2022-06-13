@@ -7,5 +7,6 @@ dist/
 lib/
 yarn.lock
 package-lock.json
+packages/discord/package-lock.json
 packages/core/lumen-config.json
 lumen-config.json
