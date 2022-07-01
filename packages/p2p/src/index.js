@@ -10,7 +10,8 @@ const PubsubPeerDiscovery = require("libp2p-pubsub-peer-discovery");
 const LumenConfig = require("@digitalnative/lumen-config");
 // Known peers addresses
 const bootstrapMultiaddrs = [
-  "/ip4/127.0.0.1/tcp/30333/p2p/QmUNxWQPAxe3xJtgPUho9hPUjk1kvWAxPm6KpaRizV3kAB"
+  "/ip4/127.0.0.1/tcp/30333/p2p/QmUNxWQPAxe3xJtgPUho9hPUjk1kvWAxPm6KpaRizV3kAB",
+  "/ip4/127.0.0.1/tcp/51532/p2p/QmfXazgCnxLcJwHW9xtuexFwCcKG3LQXFzNq5pQEf7gegM"
 ];
 // Chat protocol
 const ChatProtocol = require("./chat-protocol");

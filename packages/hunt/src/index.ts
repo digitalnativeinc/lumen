@@ -123,7 +123,7 @@ async function investigate(i, vaultManager, vaultFactory, api, events) {
 async function getHealthCheck(collateral, debt, cAmount, dAmount, vaultManager, mcr) {
     const cPrice = await vaultManager.getAssetPrice(collateral)
     const dPrice = await vaultManager.getAssetPrice(debt)
-    const dValue = dPrice.mul(dAmount).gt(0) ? dPrice.mul(dAmount) : 0.001   
+    const dValue = dPrice.mul(dAmount).gt(0) ? dPrice.mul(dAmount) : 1   
     const cdpRatioPercent = cPrice.mul(cAmount).div(dValue) * 100
     // HP = (MCR + 50%) - (cdpRatio in percentage - mcr)
     const HP = 100 * (cdpRatioPercent - (mcr/100000)) / 50
