@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/p2p",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "description": "p2p client implementation",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
   "main": "index.js",
