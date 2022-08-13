@@ -25,7 +25,6 @@
     "find-up": "^4.0.0",
     "lodash.assignin": "^4.2.0",
     "lodash.merge": "^4.6.2",
-    "module": "^1.2.5",
     "original-require": "1.0.1",
     "prompt": "^1.1.0",
     "source-map-support": "^0.5.19"

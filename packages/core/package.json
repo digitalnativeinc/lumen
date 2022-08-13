@@ -40,7 +40,6 @@
     "@digitalnative/lumen-hunt": "^0.4.17",
     "@digitalnative/lumen-targets": "^0.4.13",
     "@digitalnative/type-definitions": "latest",
-    "@liftr/tscov": "^1.4.7",
     "@polkadot/api": "^5.0.1",
     "@polkadot/types": "^5.0.1",
     "@polkadot/types-known": "^5.0.1",
