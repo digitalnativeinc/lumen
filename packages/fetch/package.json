@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@digitalnative/lumen-config": "^0.4.16",
+    "@digitalnative/lumen-config": "0.4.16",
     "@digitalnative/lumen-targets": "^0.4.13",
     "axios": "^0.21.1",
     "finnhub": "^1.2.1",
