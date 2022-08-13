@@ -49,6 +49,7 @@
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-unicorn": "^22.0.0",
+    "fs-extra": "10.1.0",
     "istanbul-api": "3.0.x",
     "istanbul-reports": "3.0.x",
     "jest": "26.4.x",

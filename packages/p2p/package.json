@@ -32,5 +32,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "59a937440bf34214fedcb118b91e4f7312607ea9"
+  "gitHead": "59a937440bf34214fedcb118b91e4f7312607ea9",
+  "devDependencies": {
+    "fs-extra": "10.1.0"
+  }
 }
