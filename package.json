@@ -22,8 +22,7 @@
     "prs-merged-since": "^1.1.0",
     "yarn-audit-fix": "^9.3.1"
   },
-  "workspaces": 
-  [
+  "workspaces": [
     "packages/*"
   ],
   "publishConfig": {
