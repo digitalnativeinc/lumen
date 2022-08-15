@@ -1,6 +1,6 @@
 {
   "name": "@digitalnative/lumen",
-  "version": "0.4.17",
+  "version": "0.4.18",
   "description": "Core module for Lumen, a chain-agnostic oracle provider",
   "license": "Apache-2.0",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -36,9 +36,9 @@
     "middleware"
   ],
   "dependencies": {
-    "@digitalnative/lumen-client": "^0.4.16",
-    "@digitalnative/lumen-hunt": "^0.4.17",
-    "@digitalnative/lumen-targets": "^0.4.13",
+    "@digitalnative/lumen-client": "^0.4.18",
+    "@digitalnative/lumen-hunt": "^0.4.18",
+    "@digitalnative/lumen-targets": "^0.4.18",
     "@digitalnative/type-definitions": "latest",
     "@polkadot/api": "^5.0.1",
     "@polkadot/types": "^5.0.1",
