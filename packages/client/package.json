@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@digitalnative/lumen-config": "^0.4.16",
+    "@digitalnative/lumen-config": "0.4.16",
     "@digitalnative/lumen-discord": "^0.4.16",
     "@digitalnative/lumen-fetch": "^0.4.16",
     "@digitalnative/lumen-submit": "^0.4.16",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
+    "fs-extra": "10.1.0",
     "ts-node": "8.10.2",
     "typescript": "4.3.5"
   },
